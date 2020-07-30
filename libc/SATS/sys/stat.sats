@@ -22,13 +22,16 @@ These return: 0 if OK, -1 on error
 *)
 fun
 stat
-( fnm: string, buf: ptrnz(stat_t0)): ecineg
+( fnm: string
+, buf: ptrnz(stat_t0)): ecineg
 fun
 fstat
-( fd0: fildes, buf: ptrnz(stat_t0)): ecineg
+( fd0: fildes
+, buf: ptrnz(stat_t0)): ecineg
 fun
 lstat
-( fnm: string, buf: ptrnz(stat_t0)): ecineg
+( fnm: string
+, buf: ptrnz(stat_t0)): ecineg
 
 (* ****** ****** *)
 

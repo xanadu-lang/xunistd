@@ -36,26 +36,26 @@
 (* ****** ****** *)
 
 typedef
-p1trez =
+p1gez =
 [l:a0|l>=null] p1tr(l)
 typedef
-p1trnz =
+p1gtz =
 [l:a0|l > null] p1tr(l)
 
 typedef
-p2trez(a:vt) =
+p2gez(a:vt) =
 [l:a0|l>=null] p2tr(a, l)
 typedef
-p2trnz(a:vt) =
+p2gtz(a:vt) =
 [l:a0|l > null] p2tr(a, l)
 
 (* ****** ****** *)
 //
-typedef ptrez = p1trez
-typedef ptrnz = p1trnz
+typedef pgez = p1gez
+typedef pgtz = p1gtz
 //
-typedef ptrez(a:vt) = p2trez(a)
-typedef ptrnz(a:vt) = p2trnz(a)
+typedef pgez(a:vt) = p2gez(a)
+typedef pgtz(a:vt) = p2gtz(a)
 //
 (* ****** ****** *)
 
@@ -82,7 +82,7 @@ ecineg(i:i0) = ecineg_vt(i)
 //
 fcast
 ecineg_toint
-{i:int}(ec: ecineg(i)): int(i)
+{i:int}(ecineg(i)): int(i)
 #symload int with ecineg_toint
 #symload toint with ecineg_toint
 //
@@ -90,13 +90,44 @@ ecineg_toint
 //
 fun
 ecineg_failq
-{i:int}(ec: ecineg(i)): bool(i<0)
+{i:int}(ecineg(i)): bool(i<0)
 fun
 ecineg_succq
-{i:int}(ec: ecineg(i)): bool(i>=0)
+{i:int}(ecineg(i)): bool(i>=0)
 //
 #symload failq with ecineg_failq
 #symload succq with ecineg_succq
+//
+(* ****** ****** *)
+//
+absvwtp
+ecieof_vt(i:i0) == int(i)
+//
+vwtpdef
+ecieof =
+[i:i0] ecieof_vt(i)
+vwtpdef
+ecieof(i:i0) = ecieof_vt(i)
+//
+(* ****** ****** *)
+//
+fcast
+ecieof_toint
+{i:int}(ecieof(i)): int(i)
+#symload int with ecieof_toint
+#symload toint with ecieof_toint
+//
+(* ****** ****** *)
+//
+fun
+ecieof_failq
+{i:int}(ecieof(i)): bool(i<0)
+fun
+ecieof_succq
+{i:int}(ecieof(i)): bool(i>=0)
+//
+#symload failq with ecieof_failq
+#symload succq with ecieof_succq
 //
 (* ****** ****** *)
 
