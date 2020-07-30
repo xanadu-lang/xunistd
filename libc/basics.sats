@@ -35,36 +35,12 @@
 *)
 (* ****** ****** *)
 
-typedef
-p1gez =
-[l:a0|l>=null] p1tr(l)
-typedef
-p1gtz =
-[l:a0|l > null] p1tr(l)
-
-typedef
-p2gez(a:vt) =
-[l:a0|l>=null] p2tr(a, l)
-typedef
-p2gtz(a:vt) =
-[l:a0|l > null] p2tr(a, l)
-
-(* ****** ****** *)
-//
-typedef pgez = p1gez
-typedef pgtz = p1gtz
-//
-typedef pgez(a:vt) = p2gez(a)
-typedef pgtz(a:vt) = p2gtz(a)
-//
-(* ****** ****** *)
-
 (*
-ec_neg
-ec_nez
-ec_eqz
-ec_eof
-ec_nul
+ec_neg // ok/err: 0/-1
+ec_nez // ok/err: 0/nz
+ec_eqz // ok/err: nz/0
+ec_eof // ok/err: 0/lz
+ec_nul // ok/err: nz/0
 *)
 
 (* ****** ****** *)
@@ -130,14 +106,26 @@ ecieof_succq
 #symload succq with ecieof_succq
 //
 (* ****** ****** *)
-
+//
+// HX:
+// For file descriptors
+//
 abstype
 fildes_t0(i:i0) == int(i)
 typedef
 fildes = [i:i0] fildes_t0(i)
 typedef
 fildes(i:i0) = [i:i0] fildes_t0(i)
-
+//
+(* ****** ****** *)
+//
+fcast
+fildes_toint
+{i:i0}(fd: filedes(i)): int(i)
+fcast
+fildes_ofint
+{i:nat}(fd: int(i)): filedes(i)
+//
 (* ****** ****** *)
 
 (* end of [basics.sats] *)
