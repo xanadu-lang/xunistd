@@ -62,13 +62,17 @@ vwtpdef
 ecineg(i:i0) = ecineg_vt(i)
 //
 (* ****** ****** *)
-//
 fcast
 ecineg_toint
 {i:int}(ecineg(i)): int(i)
 #symload int with ecineg_toint
 #symload toint with ecineg_toint
-//
+(* ****** ****** *)
+fcast
+ecineg_ofint
+{i:int}(int(i)): ecineg(i)
+#symload ofint with ecineg_ofint
+#symload ecineg with ecineg_ofint
 (* ****** ****** *)
 //
 fun
@@ -132,6 +136,9 @@ fildes_toint
 fcast
 fildes_ofint
 {i:nat}(fd: int(i)): filedes(i)
+//
+#symload toint with fildes_toint
+#symload fildes with fildes_ofint
 //
 (* ****** ****** *)
 
