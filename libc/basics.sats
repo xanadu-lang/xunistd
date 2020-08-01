@@ -35,6 +35,13 @@
 *)
 (* ****** ****** *)
 
+typedef
+charp0 = p2gez(char)
+typedef
+charp1 = p2gtz(char)
+
+(* ****** ****** *)
+
 (*
 ec_neg // ok/err: 0/-1
 ec_nez // ok/err: 0/nz
