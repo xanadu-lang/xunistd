@@ -41,6 +41,24 @@ typedef
 charp1 = p2gtz(char)
 
 (* ****** ****** *)
+//
+absvwtp
+ecbool_vt(b:b0)==bool(b)
+//
+vwtpdef
+ecbool =
+[b:b0] ecbool_vt(b)
+vwtpdef
+ecbool(b:b0) = ecbool_vt(b)
+//
+(* ****** ****** *)
+//
+fun
+ecbool_succ(): ecbool(tt)
+fun
+ecbool_fail(): ecbool(ff)
+//
+(* ****** ****** *)
 
 (*
 ec_neg // ok/err: 0/-1
@@ -73,6 +91,11 @@ ecineg_ofint
 {i:int}(int(i)): ecineg(i)
 #symload ofint with ecineg_ofint
 #symload ecineg with ecineg_ofint
+(* ****** ****** *)
+fun
+ecineg_succ(): ecineg(0)
+fun
+ecineg_fail(): ecineg(-1)
 (* ****** ****** *)
 //
 fun

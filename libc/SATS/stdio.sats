@@ -22,6 +22,8 @@ typedef FILE = FILE_type
 typedef
 FILEptr = p2tr(FILE)
 typedef
+FILEpgez = p2gez(FILE)
+typedef
 FILEpgtz = p2gtz(FILE)
 
 (* ****** ****** *)
@@ -29,6 +31,26 @@ FILEpgtz = p2gtz(FILE)
 fun
 fclose(FILEpgtz): ecineg
 
+(* ****** ****** *)
+//
+(*
+FILE*
+fopen
+(const char *path, const char *mode);
+FILE*
+freopen
+(const char *path, const char *mode, FILE *stream);
+*)
+fun
+fopen
+( path: string
+, mode: string): FILEpgez
+fun
+freopen
+( path: string
+, mode: string
+, stream: FILEpgtz): FILEpgez
+//              
 (* ****** ****** *)
 //
 fun
