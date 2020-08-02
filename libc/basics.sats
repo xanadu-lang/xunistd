@@ -59,6 +59,18 @@ fun
 ecbool_fail(): ecbool(ff)
 //
 (* ****** ****** *)
+//
+fun
+ecbool_succq
+{b:b0}(ecbool(b)): bool(b)
+fun
+ecbool_failq
+{b:b0}(ecbool(b)): bool(~b)
+//
+#symload succq with ecbool_succq
+#symload failq with ecbool_failq
+//
+(* ****** ****** *)
 
 (*
 ec_neg // ok/err: 0/-1
@@ -71,7 +83,7 @@ ec_nul // ok/err: nz/0
 (* ****** ****** *)
 //
 absvwtp
-ecineg_vt(i:i0) == int(i)
+ecineg_vt(i:i0) == sint(i)
 //
 vwtpdef
 ecineg =
@@ -82,7 +94,7 @@ ecineg(i:i0) = ecineg_vt(i)
 (* ****** ****** *)
 fcast
 ecineg_toint
-{i:int}(ecineg(i)): int(i)
+{i:int}(ecineg(i)): sint(i)
 #symload int with ecineg_toint
 #symload toint with ecineg_toint
 (* ****** ****** *)
@@ -99,14 +111,14 @@ ecineg_fail(): ecineg(-1)
 (* ****** ****** *)
 //
 fun
-ecineg_failq
-{i:int}(ecineg(i)): bool(i<0)
-fun
 ecineg_succq
 {i:int}(ecineg(i)): bool(i>=0)
+fun
+ecineg_failq
+{i:int}(ecineg(i)): bool(i<0)
 //
-#symload failq with ecineg_failq
 #symload succq with ecineg_succq
+#symload failq with ecineg_failq
 //
 (* ****** ****** *)
 //
