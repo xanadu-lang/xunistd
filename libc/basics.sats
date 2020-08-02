@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -29,17 +29,39 @@
 (*
 //
 // Author: Hongwei Xi
-// Start Time: July, 2018
+// Start Time: August, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 *)
 (* ****** ****** *)
-
+#staload
+"prelude\
+/SATS/CC/basics.sats"
+(* ****** ****** *)
 typedef
 charp0 = p2gez(char)
 typedef
 charp1 = p2gtz(char)
-
+typedef
+charpn(n:i0) = p2trn(char, n)
+(* ****** ****** *)
+typedef
+charcp0 = cp2gez(char)
+typedef
+charcp1 = cp2gtz(char)
+typedef
+charcpn(n:i0) = cp2trn(char, n)
+(* ****** ****** *)
+(*
+HX:
+Note that 'ec' for error code
+HX:
+It is a cardinal sin to ignore
+error code in systems programming!
+HX:
+A function returning a boolean is
+often given a name that ends with 'q'
+*)
 (* ****** ****** *)
 //
 absvwtp
@@ -73,11 +95,11 @@ ecbool_failq
 (* ****** ****** *)
 
 (*
-ec_neg // ok/err: 0/-1
-ec_nez // ok/err: 0/nz
-ec_eqz // ok/err: nz/0
-ec_eof // ok/err: 0/lz
-ec_nul // ok/err: nz/0
+ecineg // ok/err: 0/-1
+ecinez // ok/err: 0/nz
+ecieqz // ok/err: nz/0
+ecieof // ok/err: 0/lz
+ecinul // ok/err: nz/0
 *)
 
 (* ****** ****** *)
@@ -167,10 +189,11 @@ fildes(i:i0) = [i:i0] fildes_t0(i)
 //
 fcast
 fildes_toint
-{i:i0}(fd: filedes(i)): int(i)
+{i:i0}
+(fd: fildes(i)): int(i)
 fcast
 fildes_ofint
-{i:nat}(fd: int(i)): filedes(i)
+{i:nat}(fd: int(i)): fildes(i)
 //
 #symload toint with fildes_toint
 #symload fildes with fildes_ofint

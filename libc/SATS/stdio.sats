@@ -68,9 +68,11 @@ ungetc
 (* ****** ****** *)
 fun
 fgets
+{n:int}
+{i:nat|i<=n}
 ( buf
-: charp1
-, size: nint
+: charpn(n)
+, size: sint(i)
 , stream: FILEpgtz): charp0
 (* ****** ****** *)
 //
@@ -87,6 +89,32 @@ fun
 puts(cs: string): ecieof
 fun
 fputs(cs: string, FILEpgtz): ecieof
+(* ****** ****** *)
+(*
+size_t
+fread
+( void *ptr
+, size_t size, size_t nmemb, FILE *stream);
+*)
+fun
+fread_byte
+{n:int}
+{i:nat|i<=n}
+( buf: charpn(n)
+, nmemb: size(i), stream: FILEpgtz): sizelte(i)
+(* ****** ****** *)
+(*
+size_t
+fwrite
+( const void *ptr
+, size_t size, size_t nmemb, FILE *stream);
+*)
+fun
+fwrite_byte
+{n:int}
+{i:nat|i<=n}
+( buf: charcpn(n)
+, nmemb: size(i), stream: FILEpgtz): sizelte(i)
 (* ****** ****** *)
                             
 (* end of [stdio.sats] *)
