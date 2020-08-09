@@ -10,7 +10,7 @@ git clone --recursive https://github.com/xanadu-lang/xunistd.git
 
 ### Prerequisites
 
-ATS2-0.4.0 or a later version is required,
+ATS2-0.4.1 or a later version is required,
 which is available [here](http://www.ats-lang.org/Downloads.html)
 
 ### Build with ATS2
