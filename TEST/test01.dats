@@ -18,25 +18,32 @@ assert(tf: bool): void
 fun<>
 fcopy
 ( fp1
-: FILEpgtz
+: FILEp1
 , fp2
-: FILEpgtz): ecbool =
+: FILEp1): ecbool =
+(
+  loop()
+) where
+{
+fun
+loop(): ecbool =
 let
 val c0 =
 toint(fgetc(fp1))
 in
 if
 (c0 < 0)
-then ecbool_succ()
+then ecbool_okay()
 else
 let
 val ec = fputc(c0, fp2)
 in
   if
-  succq(ec)
-  then fcopy(fp1, fp2) else ecbool_fail()
+  okayq(ec)
+  then loop() else ecbool_fail()
 end
-end // end of [fcopy]
+end
+} (* end of [fcopy] *)
 //
 (* ****** ****** *)
 
@@ -60,15 +67,22 @@ in
 //
   if
   eqzq(fp2)
-  then ecbool_fail()
+  then
+  (
+  ecbool_fail()
+  ) where
+  {
+  val ( ) =
+  assert(okayq(fclose(fp1)))
+  }
   else
   let
   val res =
   fcopy<>(fp1, fp2)
   val ( ) =
-  assert(succq(fclose(fp1)))
+  assert(okayq(fclose(fp1)))
   val ( ) =
-  assert(succq(fclose(fp2))) in res end
+  assert(okayq(fclose(fp2))) in res end
 //
 end // end of [else]
 //

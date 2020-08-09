@@ -76,20 +76,20 @@ ecbool(b:b0) = ecbool_vt(b)
 (* ****** ****** *)
 //
 fun
-ecbool_succ(): ecbool(tt)
+ecbool_okay(): ecbool(tt)
 fun
 ecbool_fail(): ecbool(ff)
 //
 (* ****** ****** *)
 //
 fun
-ecbool_succq
+ecbool_okayq
 {b:b0}(ecbool(b)): bool(b)
 fun
 ecbool_failq
 {b:b0}(ecbool(b)): bool(~b)
 //
-#symload succq with ecbool_succq
+#symload okayq with ecbool_okayq
 #symload failq with ecbool_failq
 //
 (* ****** ****** *)
@@ -127,20 +127,20 @@ ecineg_ofint
 #symload ecineg with ecineg_ofint
 (* ****** ****** *)
 fun
-ecineg_succ(): ecineg(0)
+ecineg_okay(): ecineg(0)
 fun
 ecineg_fail(): ecineg(-1)
 (* ****** ****** *)
 //
 fun
-ecineg_succq
-{i:int}(ecineg(i)): bool(i>=0)
-fun
 ecineg_failq
 {i:int}(ecineg(i)): bool(i<0)
+fun
+ecineg_okayq
+{i:int}(ecineg(i)): bool(i>=0)
 //
-#symload succq with ecineg_succq
 #symload failq with ecineg_failq
+#symload okayq with ecineg_okayq
 //
 (* ****** ****** *)
 //
@@ -167,11 +167,11 @@ fun
 ecieof_failq
 {i:int}(ecieof(i)): bool(i<0)
 fun
-ecieof_succq
+ecieof_okayq
 {i:int}(ecieof(i)): bool(i>=0)
 //
 #symload failq with ecieof_failq
-#symload succq with ecieof_succq
+#symload okayq with ecieof_okayq
 //
 (* ****** ****** *)
 //

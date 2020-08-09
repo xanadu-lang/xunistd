@@ -20,16 +20,14 @@ typedef FILE = FILE_type
 (* ****** ****** *)
 
 typedef
-FILEptr = p2tr(FILE)
+FILEp0 = p2gez(FILE)
 typedef
-FILEpgez = p2gez(FILE)
-typedef
-FILEpgtz = p2gtz(FILE)
+FILEp1 = p2gtz(FILE)
 
 (* ****** ****** *)
 
 fun
-fclose(FILEpgtz): ecineg
+fclose(FILEp1): ecineg
 
 (* ****** ****** *)
 //
@@ -44,12 +42,12 @@ freopen
 fun
 fopen
 ( path: string
-, mode: string): FILEpgez
+, mode: string): FILEp0
 fun
 freopen
 ( path: string
 , mode: string
-, stream: FILEpgtz): FILEpgez
+, stream: FILEp1): FILEp0
 //              
 (* ****** ****** *)
 //
@@ -57,14 +55,14 @@ fun
 getchar(): ecieof
 //
 fun
-getc(FILEpgtz): ecieof
+getc(FILEp1): ecieof
 fun
-fgetc(FILEpgtz): ecieof
+fgetc(FILEp1): ecieof
 (* ****** ****** *)
 fun
 ungetc
 ( c0: int
-, stream: FILEpgtz): ecieof
+, stream: FILEp1): ecieof
 (* ****** ****** *)
 fun
 fgets
@@ -73,22 +71,22 @@ fgets
 ( buf
 : charpn(n)
 , size: sint(i)
-, stream: FILEpgtz): charp0
+, stream: FILEp1): charp0
 (* ****** ****** *)
 //
 fun
 putchar(c0: int): ecieof
-//
+//n
 fun
-putc(c0: int, FILEpgtz): ecieof
+putc(c0: int, FILEp1): ecieof
 fun
-fputc(c0: int, FILEpgtz): ecieof
+fputc(c0: int, FILEp1): ecieof
 //
 (* ****** ****** *)
 fun
 puts(cs: string): ecieof
 fun
-fputs(cs: string, FILEpgtz): ecieof
+fputs(cs: string, FILEp1): ecieof
 (* ****** ****** *)
 (*
 size_t
@@ -101,7 +99,7 @@ fread_byte
 {n:int}
 {i:nat|i<=n}
 ( buf: charpn(n)
-, nmemb: size(i), stream: FILEpgtz): sizelte(i)
+, nmemb: size(i), stream: FILEp1): sizelte(i)
 (* ****** ****** *)
 (*
 size_t
@@ -114,7 +112,7 @@ fwrite_byte
 {n:int}
 {i:nat|i<=n}
 ( buf: charcpn(n)
-, nmemb: size(i), stream: FILEpgtz): sizelte(i)
+, nmemb: size(i), stream: FILEp1): sizelte(i)
 (* ****** ****** *)
                             
 (* end of [stdio.sats] *)
