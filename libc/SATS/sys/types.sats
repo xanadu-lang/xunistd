@@ -83,10 +83,10 @@ typedef blksize = blksize_type
 (* ****** ****** *)
 //
 abstype
-timespec_t0 ==
+timespec_type ==
 $extype"struct timespec"
 //
-typedef timespec = timespec_t0
+typedef timespec = timespec_type
 //
 (* ****** ****** *)
 
